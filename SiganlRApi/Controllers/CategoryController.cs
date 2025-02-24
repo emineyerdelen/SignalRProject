@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SiganlR.EntityLayer.Entities;
 using SignalR.BusinessLayer.Abstract;
-using SignalR.DataAccessLayer.Abstract;
 using SignalR.DtoLayer.CategoryDto;
 
 namespace SiganlRApi.Controllers

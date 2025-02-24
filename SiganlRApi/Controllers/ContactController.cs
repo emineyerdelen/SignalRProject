@@ -28,40 +28,44 @@ namespace SiganlRApi.Controllers
             return Ok(value);
         }
         [HttpPost]
-        public IActionResult CreateCategory(CreateContactDto createContactDto)
+        public IActionResult CreateContact(CreateContactDto createContactDto)
         {
             _contactService.TAdd(new Contact()
             {
               Mail=createContactDto.Mail,
-
+              FooterDescription=createContactDto.FooterDescription,
+              Location=createContactDto.Location,
+              Phone = createContactDto.Phone    
             });
-            return Ok("Kategori Eklendi");
+            return Ok("İletişim Eklendi");
         }
 
         [HttpDelete]
         public IActionResult DeleteCategory(int id)
         {
-            var value = _categoryService.TGetByID(id);
-            _categoryService.TDelete(value);
-            return Ok("Kategori Silindi");
+            var value = _contactService.TGetByID(id);
+            _contactService.TDelete(value);
+            return Ok("İletişim Silindi");
         }
 
-        [HttpGet("GetCategory")]
-        public IActionResult GetCategory(int id)
+        [HttpGet("GetContact")]
+        public IActionResult GetContact(int id)
         {
-            var value = _categoryService.TGetByID(id);
+            var value = _contactService.TGetByID(id);
             return Ok(value);
         }
         [HttpPut]
-        public IActionResult UpdateCategory(UpdateCategoryDto updateCategoryDto)
+        public IActionResult UpdateCategory(UpdateContactDto updateContactDto)
         {
-            _categoryService.TUpdate(new Category()
+            _contactService.TUpdate(new Contact()
             {
-                CategoryName = updateCategoryDto.CategoryName,
-                CategoryID = updateCategoryDto.CategoryID,
-                CategoryStatus = updateCategoryDto.CategoryStatus,
+                ContactID=updateContactDto.ContactID,
+                Mail = updateContactDto.Mail,
+                FooterDescription=updateContactDto.FooterDescription,
+                Location=updateContactDto.Location,
+                Phone=updateContactDto.Phone
             });
-            return Ok("Kategori Güncellendi");
+            return Ok("İletişim Güncellendi");
 
         }
     }
